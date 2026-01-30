@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIC Feast Carnival 2026</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      padding: 40px 16px;
+      position: relative;
+      overflow-x: hidden;
+      background-color: hsl(45 40% 94%);
+    }
+
+    /* Background decorative pattern */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+      background-image: 
+        radial-gradient(circle at 20% 20%, hsl(45 70% 85%) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, hsl(35 60% 85%) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Main card container */
+    .invitation-card {
+      position: relative;
+      max-width: 680px;
+      margin: 0 auto;
+      background-color: hsl(45 40% 95%);
+      border-radius: 16px;
+      border: 3px solid hsl(35 40% 75%);
+      box-shadow: 0 0 0 8px hsl(45 40% 92%), 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Corner flourishes */
+    .corner {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+    }
+    .corner-tl { top: 16px; left: 16px; border-left: 2px solid hsl(45 90% 55% / 0.5); border-top: 2px solid hsl(45 90% 55% / 0.5); }
+    .corner-tr { top: 16px; right: 16px; border-right: 2px solid hsl(45 90% 55% / 0.5); border-top: 2px solid hsl(45 90% 55% / 0.5); }
+    .corner-bl { bottom: 16px; left: 16px; border-left: 2px solid hsl(45 90% 55% / 0.5); border-bottom: 2px solid hsl(45 90% 55% / 0.5); }
+    .corner-br { bottom: 16px; right: 16px; border-right: 2px solid hsl(45 90% 55% / 0.5); border-bottom: 2px solid hsl(45 90% 55% / 0.5); }
+
+    /* Header section */
+    .header {
+      padding: 40px 32px 24px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      font-weight: 500;
+      color: hsl(25 45% 25%);
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      font-family: Georgia, serif;
+      font-size: 40px;
+      font-weight: bold;
+      color: hsl(25 45% 25%);
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .title { font-size: 48px; }
+    }
+
+    /* Gold decorative line */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .divider-line {
+      height: 1px;
+      width: 64px;
+      background: linear-gradient(to right, transparent, hsl(45 90% 55%));
+    }
+
+    .divider-line:last-child {
+      background: linear-gradient(to left, transparent, hsl(45 90% 55%));
+    }
+
+    .divider-dot {
+      width: 8px;
+      height: 8px;
+      background-color: hsl(45 90% 55%);
+      border-radius: 50%;
+    }
+
+    .organizer-label {
+      font-size: 12px;
+      color: hsl(25 45% 25% / 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .organizer-name {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: hsl(25 45% 25%);
+      margin-top: 4px;
+    }
+
+    @media (min-width: 768px) {
+      .organizer-name { font-size: 20px; }
+    }
+
+    .organizer-dept {
+      font-size: 16px;
+      font-weight: 500;
+      color: hsl(25 45% 25% / 0.8);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* Main content */
+    .content {
+      padding: 16px 32px;
+    }
+
+    /* Invitation message box */
+    .message-box {
+      background-color: hsl(45 35% 93%);
+      border: 1px solid hsl(35 30% 80%);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .message-box p {
+      color: hsl(25 45% 25%);
+      line-height: 1.7;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .message-greeting {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .message-highlight {
+      font-weight: 500;
+      color: hsl(25 45% 25%);
+    }
+
+    .message-cta {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 16px;
+      font-weight: 500;
+      color: hsl(25 80% 45%);
+    }
+
+    .message-footer {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      color: hsl(25 45% 25% / 0.7);
+    }
+
+    /* Event details */
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 0;
+      margin-bottom: 24px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: hsl(25 45% 25%);
+      font-size: 14px;
+    }
+
+    .detail-item svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Grid layout for objectives and activities */
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card-section {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid hsl(35 30% 75%);
+    }
+
+    .card-header {
+      background-color: hsl(15 70% 35%);
+      padding: 8px 16px;
+      text-align: center;
+    }
+
+    .card-header h3 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .card-header svg {
+      width: 16px;
+      height: 16px;
+      color: hsl(45 85% 75%);
+    }
+
+    .card-body {
+      background-color: hsl(45 40% 95%);
+      padding: 16px;
+    }
+
+    .card-body ul {
+      list-style: none;
+    }
+
+    .card-body li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: hsl(25 45% 25%);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .card-body li:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-body li svg {
+      width: 12px;
+      height: 12px;
+      color: hsl(45 90% 55%);
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 16px 0 24px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: hsl(25 45% 25% / 0.6);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="invitation-card">
+    <!-- Corner flourishes -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <!-- Header Section -->
+    <div class="header">
+      <p class="subtitle">You Are Graciously Invited To</p>
+      <h1 class="title">DIC Feast Carnival 2026</h1>
+      
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+
+      <p class="organizer-label">Organized With Pride By</p>
+      <h2 class="organizer-name">Department of Computer Science & Engineering</h2>
+      <p class="organizer-dept">CSE DEPARTMENT</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <!-- Invitation Message -->
+      <div class="message-box">
+        <p>
+          <span class="message-greeting">Dear Esteemed Teachers and Cherished Friends,</span>
+          <br><br>
+          We hope this message finds you in excellent health and high spirits. As we embrace the new year with renewed enthusiasm, we cordially invite you to join us for a day of unity and celebration — strengthening the bonds we share with our beloved teachers and fellow students.
+          <br><br>
+          Let us come together for an unforgettable morning filled with delectable cuisine, heartfelt conversations, and joyful moments that bring us closer as one family.
+          <br><br>
+          <span class="message-highlight">Your gracious presence will truly make this occasion remarkable for everyone.</span>
+        </p>
+        <p class="message-cta">We eagerly await the pleasure of your company! 😊</p>
+        <p class="message-footer">Organized by: CSE DEPARTMENT</p>
+      </div>
+
+      <!-- Event Details -->
+      <div class="event-details">
+        <div class="detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span style="font-weight: 500;">Morning to noon onward</span>
+        </div>
+        <div class="detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Daffodil International College, Baburhat</span>
+        </div>
+      </div>
+
+      <!-- Grid: Objectives & Activities -->
+      <div class="grid">
+        <!-- Objectives -->
+        <div class="card-section">
+          <div class="card-header">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                <path d="M5 3v4"></path>
+                <path d="M19 17v4"></path>
+                <path d="M3 5h4"></path>
+                <path d="M17 19h4"></path>
+              </svg>
+              Our Objectives
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                <path d="M5 3v4"></path>
+                <path d="M19 17v4"></path>
+                <path d="M3 5h4"></path>
+                <path d="M17 19h4"></path>
+              </svg>
+            </h3>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                Spending quality time together
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+                Savoring delicious cuisine
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+                Strengthening bonds with teachers
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                  <path d="M5 3v4"></path>
+                  <path d="M19 17v4"></path>
+                  <path d="M3 5h4"></path>
+                  <path d="M17 19h4"></path>
+                </svg>
+                Creating joyful memories
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                </svg>
+                Building stronger connections
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Activities -->
+        <div class="card-section">
+          <div class="card-header">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              Event Activities
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+            </h3>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                </svg>
+                Reciting inspiring poems
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" x2="10" y1="11" y2="11"></line>
+                  <line x1="8" x2="8" y1="9" y2="13"></line>
+                  <line x1="15" x2="15.01" y1="12" y2="12"></line>
+                  <line x1="18" x2="18.01" y1="10" y2="10"></line>
+                  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"></path>
+                </svg>
+                Engaging mini-games
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
+                </svg>
+                Melodious songs
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"></path>
+                  <circle cx="17" cy="7" r="5"></circle>
+                </svg>
+                Enlightening speech by teacher
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>We kindly request your esteemed presence • Formal attire appreciated</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
