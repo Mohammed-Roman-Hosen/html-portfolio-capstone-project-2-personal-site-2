@@ -7,225 +7,240 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Mohammed Roman Hosen</title>
-    <style>
+  <style>
+    :root {
+        /* Base Colors - 2025 Dark Mode Palette */
+        --bg-deep: #0a0f1d;           /* Near Black Navy */
+        --bg-card: #161e2d;           /* Card Background */
+        --bg-section-alt: #0f172a;    /* Alternate Section Background */
+        --text-header: #ffffff;
+        --text-body: #94a3b8;         /* Muted Gray-Blue */
         
-        :root {
-            --primary-dark: #2d3436;
-            --accent-blue: #0984e3;
-            --text-main: #2d3436;
-            --text-muted: #636e72;
-            --white: #ffffff;
-           
-            --bg-summary: #F8BBC2;
-            --bg-personal: #FFDAB3 ;
-            --bg-education: #FDFD96;
-            --bg-experience: #B3DDC4;
-            --bg-skills: #BADFDB;
-            --bg-projects: #A7C7E7;
-            --bg-hobbies: #A7AAE1;
-        }
+        /* Accent Colors */
+        --accent-cyan: #22d3ee;       /* Neon Cyan */
+        --accent-green: #01c16a;      /* Pastel Green */
+        --accent-pink: #ff5e6c;       /* Coral Pink */
+        --glass-white: #f8fafc;       /* Crystal White for buttons */
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-      body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #b0b6d4; 
-    color: var(--text-main);
-    line-height: 1.7;
-    padding: 0; 
-    margin: 0;
-}
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: var(--bg-deep);
+        color: var(--text-body);
+        line-height: 1.7;
+    }
 
-.main-wrapper {
-    max-width: 100%; 
-    margin: 0;       
-    background: var(--white);
-    border-radius: 0;
-    overflow: hidden;
-    box-shadow: none;
-    position: relative;
-}
+    .main-wrapper {
+        max-width: 100%;
+        margin: 0;
+        background: var(--bg-deep);
+    }
 
-        
-        .hero-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 20px;
-            width: 100%;
-            text-align: center;
-            background: linear-gradient(135deg,  #FAD0C9 90%);
-            position: relative;
-        }
+    /* I. Hero Section */
+    .hero-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 20px;
+        text-align: center;
+        background: radial-gradient(circle at center, #1e293b 0%, #0a0f1d 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        .profile-img-container {
-            position: relative;
-            z-index: 2;
-        }
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent-cyan);
+        box-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid black (190, 168, 168);
-            box-shadow: 0 10px 25px rgba(88, 74, 74, 0.1);
-            transition: transform 0.3s ease;
-        }
+    .profile-pic:hover {
+        transform: scale(1.05) rotate(2deg);
+    }
 
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
+    .hero-header h1 {
+        font-size: 3.5rem;
+        margin-top: 25px;
+        color: var(--text-header);
+        letter-spacing: -1.5px;
+    }
 
-        .hero-header h1 {
-            font-size: 3rem;
-            margin-top: 20px;
-            letter-spacing: -1px;
-            color: var(--primary-dark);
-        }
+    /* II. General Section Styling */
+    section {
+        padding: 80px 12%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
 
-       
-       section {
-    padding: 40px 10%; 
-    margin: 0;         
-    border-radius: 0;  
-    transition: 0.3s;
-}
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: var(--text-header);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
 
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            color: var(--primary-dark);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    h2::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: var(--accent-cyan);
+        border-radius: 2px;
+    }
 
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 2px;
-            background: rgba(0,0,0,0.05);
-            margin-left: 15px;
-        }
+    /* Section Background Alternation */
+    .sec-summary, .sec-education, .sec-projects { background: var(--bg-deep); }
+    .sec-info, .sec-experience, .sec-skills { background: var(--bg-section-alt); }
 
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
+    /* Technical Skills - Bento Style */
+    .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
 
-        .project-card {
-            background: rgb(255, 255, 255);
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.05);
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .skill-badge {
+        background: var(--bg-card);
+        color: var(--text-header);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: 0.3s ease;
+    }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-color: var(--accent-blue);
-        }
+    .skill-badge:hover {
+        border-color: var(--accent-cyan);
+        transform: translateY(-3px);
+        background: rgba(34, 211, 238, 0.05);
+    }
 
-        
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            border-radius: 10px;
-            background: white;
-        }
+    /* Work Experience - Green Accent */
+    .sec-experience h2::before { background: var(--accent-green); }
+    .sec-experience div {
+        background: var(--bg-card) !important;
+        border-left: 4px solid var(--accent-green) !important;
+        padding: 30px !important;
+        border-radius: 0 12px 12px 0;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
+    /* Projects Grid - Coral Pink Accent */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
 
-        th {
-            background-color: var(--primary-dark);
-            color: white;
-            padding: 15px;
-            text-align: left;
-        }
+    .project-card {
+        background: var(--bg-card);
+        color: var(--text-header) !important;
+        padding: 25px;
+        border-radius: 16px;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: 0.3s;
+        text-align: center;
+        font-weight: 500;
+    }
 
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #ffffff;
-        }
+    .project-card:hover {
+        border-color: var(--accent-pink);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
 
-       
-        .sec-summary { background-color: var(--bg-summary); }
-        .sec-info { background-color: var(--bg-personal); }
-        .sec-education { background-color: var(--bg-education); }
-        .sec-experience { background-color: var(--bg-experience); }
-        .sec-skills { background-color: var(--bg-skills); }
-        .sec-projects { background-color: var(--bg-projects); }
-        .sec-hobbies { background-color: var(--bg-hobbies); }
+    /* Education Table Styling */
+    .table-responsive {
+        background: var(--bg-card);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
 
-       
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    table th {
+        background: #000;
+        color: var(--accent-cyan);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+    }
 
-        .skill-badge {
-            background: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    table td {
+        border-bottom: 1px solid rgba(255,255,255,0.03);
+        color: var(--text-header);
+    }
 
-       
-        .contact-btn {
-            display: inline-block;
-            background: var(--accent-blue);
-            color: rgb(253, 245, 245) !important;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(9, 132, 227, 0.2);
-            transition: 0.3s;
-        }
+    /* III. New Contact Section Styling */
+    section[style*="text-align: center"] {
+        background-color: #161e2d !important; /* Lighter Slate-Navy */
+        padding: 100px 10%;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(9, 132, 227, 0.3);
-        }
+    section[style*="text-align: center"] h2 {
+        justify-content: center;
+    }
 
-       
-        footer {
-            text-align: center;
-            padding: 40px;
-            text-color: black;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background-color: #d1c2df;
-        }
+    section[style*="text-align: center"] h2::before {
+        background: var(--glass-white);
+    }
 
-       
-        @media (max-width: 1080px) {
-            section { padding: 25px 15px; margin: 10px; }
-            h1 { font-size: 2rem; }
-            .hero-header { padding: 40px 10px; }
-        }
-    </style>
+    /* Crystal White Button */
+    .contact-btn {
+        background: var(--glass-white);
+        color: #0f172a !important; /* Dark text for contrast */
+        padding: 18px 50px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        display: inline-block;
+        margin-top: 30px;
+        transition: 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.1);
+        border: 1px solid transparent;
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-5px);
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3); /* Cyan glow on hover */
+        border-color: var(--accent-cyan);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        padding: 60px;
+        background-color: #050810;
+        color: #475569;
+        font-size: 0.85rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+    @media (max-width: 1080px) {
+        section { padding: 60px 5%; }
+        .hero-header h1 { font-size: 2.5rem; }
+    }
+</style>
 </head>
 <body>
 
