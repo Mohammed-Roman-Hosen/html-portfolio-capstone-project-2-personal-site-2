@@ -11,12 +11,12 @@
 <style>
     /* 2025 Lite Tech Theme Variables */
     :root {
-        --bg-deep: #0f172a;           /* Deep Navy Base */
-        --bg-glass: rgba(30, 41, 59, 0.7); /* Lite Glass Effect */
+        --bg-deep: #0a0f1d;           /* Deep Navy Base */
+        --bg-glass: rgba(22, 30, 45, 0.8); /* Darker Glass for better contrast */
         --accent-cyan: #22d3ee;       /* Tech Cyan */
         --text-header: #ffffff;
         --text-muted: #94a3b8;
-        --lighting-white: rgba(255, 255, 255, 0.3);
+        --lighting-white: rgba(255, 255, 255, 0.25);
         --neon-glow: rgba(34, 211, 238, 0.3);
     }
 
@@ -29,8 +29,7 @@
     body {
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-deep);
-        /* Subtle radial gradient for depth */
-        background-image: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+        background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0a0f1d 100%);
         color: var(--text-muted);
         line-height: 1.6;
         padding: 60px 20px;
@@ -52,10 +51,9 @@
         font-weight: 700;
         margin-bottom: 15px;
         color: var(--text-header);
-        letter-spacing: -1px;
+        letter-spacing: -1.5px;
     }
 
-    /* Cyan glow line under the title */
     h1::after {
         content: "";
         display: block;
@@ -64,7 +62,7 @@
         background: var(--accent-cyan);
         margin: 15px auto;
         border-radius: 10px;
-        box-shadow: 0 0 10px var(--accent-cyan);
+        box-shadow: 0 0 15px var(--accent-cyan);
     }
 
     .subtitle {
@@ -75,50 +73,55 @@
     /* Grid Layout */
     .contact-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
     }
 
     /* Lite Lighting Card */
     .contact-card {
         background: var(--bg-glass);
-        backdrop-filter: blur(10px); /* Blur effect for "Lite" feel */
-        padding: 40px;
+        backdrop-filter: blur(12px);
+        padding: 35px 25px;
         border-radius: 20px;
         display: flex; 
-        align-items: center;
-        gap: 25px;
-        
-        /* White Lighting Border */
+        align-items: flex-start; /* Aligned to top for multi-line text */
+        gap: 20px;
         border: 1px solid var(--lighting-white);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: all 0.4s ease;
+        /* Prevents the card from expanding past screen width on mobile */
+        max-width: 100%;
+        overflow: hidden; 
     }
 
     .contact-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-5px);
         border-color: var(--accent-cyan);
-        /* Cyan Lighting Glow */
-        box-shadow: 0 0 20px var(--neon-glow);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--neon-glow);
     }
 
     /* Icon Styling */
     .icon-box {
         background: rgba(34, 211, 238, 0.1);
         color: var(--accent-cyan);
-        min-width: 60px;
-        height: 60px;
-        border-radius: 15px;
+        min-width: 54px;
+        height: 54px;
+        border-radius: 12px;
         display: flex; 
         align-items: center;
         justify-content: center;
-        font-size: 28px;
+        font-size: 24px;
         border: 1px solid rgba(34, 211, 238, 0.2);
     }
 
+    /* Content Area - Essential for fitting long text */
+    .card-content {
+        flex: 1;
+        min-width: 0; /* Allows text to wrap instead of pushing card width */
+    }
+
     .card-content h3 {
-        font-size: 1.4rem;
-        margin-bottom: 5px;
+        font-size: 1.3rem;
+        margin-bottom: 8px;
         color: var(--text-header);
         font-weight: 600;
     }
@@ -126,44 +129,49 @@
     .card-content p, .card-content address {
         color: var(--text-muted);
         font-style: normal;
-        font-size: 1rem;
-        margin-bottom: 5px;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
     }
 
-    /* Link/Button Lighting Effect */
+    /* The Link - Optimized to fit long Email Addresses */
     .card-content a {
         color: var(--accent-cyan);
         text-decoration: none;
         font-weight: 600;
+        font-size: 1rem;
         display: inline-block;
-        padding: 5px 12px;
-        background: rgba(34, 211, 238, 0.05);
-        border-radius: 6px;
-        border: 1px solid transparent;
+        
+        /* FIX FOR LONG EMAILS */
+        word-break: break-all;       /* Forces break for long strings */
+        overflow-wrap: break-word;   /* Standard wrap */
+        max-width: 100%;
+        
+        padding: 4px 0;
         transition: 0.3s;
     }
 
     .card-content a:hover {
-        background: var(--accent-cyan);
-        color: #000 !important;
-        box-shadow: 0 0 15px var(--accent-cyan);
+        color: #ffffff;
+        text-shadow: 0 0 10px var(--accent-cyan);
     }
 
-    /* Custom Scrollbar for Browser */
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
 
     /* Responsive Adjustments */
-    @media (max-width: 600px) {
+    @media (max-width: 480px) {
         body { padding: 40px 15px; }
         h1 { font-size: 2.2rem; }
         .contact-card {
             flex-direction: column; 
             text-align: center;
-            padding: 30px;
+            align-items: center;
+            padding: 30px 20px;
         }
+        .icon-box { margin-bottom: 10px; }
     }
 </style>
     
@@ -215,3 +223,4 @@
 </body>
 
 </html>
+
