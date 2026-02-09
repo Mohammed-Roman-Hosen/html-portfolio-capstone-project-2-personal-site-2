@@ -7,20 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Mohammed Roman Hosen</title>
-  <style>
+<style>
     :root {
-        /* Base Colors - 2025 Dark Mode Palette */
-        --bg-deep: #0a0f1d;           /* Near Black Navy */
-        --bg-card: #161e2d;           /* Card Background */
-        --bg-section-alt: #0f172a;    /* Alternate Section Background */
+        /* 2025 Dark Mode Palette */
+        --bg-deep: #0a0f1d;           
+        --bg-card: #161e2d;           
+        --bg-section-alt: #0f172a;    
         --text-header: #ffffff;
-        --text-body: #94a3b8;         /* Muted Gray-Blue */
+        --text-body: #94a3b8;         
         
-        /* Accent Colors */
-        --accent-cyan: #22d3ee;       /* Neon Cyan */
-        --accent-green: #01c16a;      /* Pastel Green */
-        --accent-pink: #ff5e6c;       /* Coral Pink */
-        --glass-white: #f8fafc;       /* Crystal White for buttons */
+        /* Neon Accents */
+        --accent-cyan: #22d3ee;       
+        --accent-green: #01c16a;      
+        --accent-pink: #ff5e6c;       
+        --lighting-white: rgba(255, 255, 255, 0.8);
+        --glass-white: #f8fafc;       
     }
 
     * {
@@ -42,7 +43,7 @@
         background: var(--bg-deep);
     }
 
-    /* I. Hero Section */
+    /* --- HERO SECTION --- */
     .hero-header {
         display: flex;
         flex-direction: column;
@@ -60,12 +61,7 @@
         border-radius: 50%;
         object-fit: cover;
         border: 4px solid var(--accent-cyan);
-        box-shadow: 0 0 30px rgba(34, 211, 238, 0.2);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .profile-pic:hover {
-        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 0 30px rgba(34, 211, 238, 0.3);
     }
 
     .hero-header h1 {
@@ -75,9 +71,9 @@
         letter-spacing: -1.5px;
     }
 
-    /* II. General Section Styling */
+    /* --- GENERAL SECTION STYLING --- */
     section {
-        padding: 80px 12%;
+        padding: 80px 10%;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
 
@@ -100,11 +96,45 @@
         border-radius: 2px;
     }
 
-    /* Section Background Alternation */
-    .sec-summary, .sec-education, .sec-projects { background: var(--bg-deep); }
     .sec-info, .sec-experience, .sec-skills { background: var(--bg-section-alt); }
 
-    /* Technical Skills - Bento Style */
+    /* --- EDUCATION TABLE (FULL WIDTH & LIGHTING) --- */
+    .table-responsive {
+        width: 100%;
+        margin-top: 20px;
+        background: transparent;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%; /* Full Width */
+        border-collapse: collapse;
+        background: var(--bg-card);
+        border: 1px solid var(--lighting-white);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Lighting effect */
+    }
+
+    th, td {
+        padding: 18px;
+        text-align: left;
+        border: 1px solid rgba(255, 255, 255, 0.4); /* Whiteish Cell Borders */
+        color: var(--text-header);
+    }
+
+    th {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent-cyan);
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05); /* Cell Lighting */
+    }
+
+    /* --- SKILLS --- */
     .skills-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -117,27 +147,16 @@
         padding: 15px;
         border-radius: 12px;
         text-align: center;
-        font-size: 0.9rem;
-        border: 1px solid rgba(255,255,255,0.05);
-        transition: 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: 0.3s;
     }
 
     .skill-badge:hover {
         border-color: var(--accent-cyan);
-        transform: translateY(-3px);
-        background: rgba(34, 211, 238, 0.05);
+        box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
     }
 
-    /* Work Experience - Green Accent */
-    .sec-experience h2::before { background: var(--accent-green); }
-    .sec-experience div {
-        background: var(--bg-card) !important;
-        border-left: 4px solid var(--accent-green) !important;
-        padding: 30px !important;
-        border-radius: 0 12px 12px 0;
-    }
-
-    /* Projects Grid - Coral Pink Accent */
+    /* --- PROJECT CARDS (LIGHTING BORDERS) --- */
     .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -148,60 +167,45 @@
         background: var(--bg-card);
         color: var(--text-header) !important;
         padding: 25px;
-        border-radius: 16px;
+        border-radius: 12px;
         text-decoration: none;
-        border: 1px solid rgba(255,255,255,0.05);
-        transition: 0.3s;
         text-align: center;
         font-weight: 500;
+        
+        /* Lighting Border Style */
+        border: 1px solid rgba(255, 255, 255, 0.3); 
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease;
     }
 
     .project-card:hover {
         border-color: var(--accent-pink);
+        box-shadow: 0 0 20px rgba(255, 94, 108, 0.4); /* Pink Lighting Glow */
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        background: rgba(255, 94, 108, 0.05);
     }
 
-    /* Education Table Styling */
-    .table-responsive {
-        background: var(--bg-card);
-        border-radius: 15px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,0.05);
+    /* --- EXPERIENCE --- */
+    .sec-experience div {
+        background: var(--bg-card) !important;
+        border: 1px solid rgba(1, 193, 106, 0.3);
+        border-left: 5px solid var(--accent-green) !important;
+        padding: 25px !important;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(1, 193, 106, 0.1);
     }
 
-    table th {
-        background: #000;
-        color: var(--accent-cyan);
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-    }
-
-    table td {
-        border-bottom: 1px solid rgba(255,255,255,0.03);
-        color: var(--text-header);
-    }
-
-    /* III. New Contact Section Styling */
+    /* --- CONTACT SECTION & CRYSTAL BUTTON --- */
+    section[style*="background-color: #a8aee0;"] , 
     section[style*="text-align: center"] {
-        background-color: #161e2d !important; /* Lighter Slate-Navy */
-        padding: 100px 10%;
+        background-color: #161e2d !important;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 100px 10%;
     }
 
-    section[style*="text-align: center"] h2 {
-        justify-content: center;
-    }
-
-    section[style*="text-align: center"] h2::before {
-        background: var(--glass-white);
-    }
-
-    /* Crystal White Button */
     .contact-btn {
         background: var(--glass-white);
-        color: #0f172a !important; /* Dark text for contrast */
+        color: #0a0f1d !important;
         padding: 18px 50px;
         border-radius: 50px;
         text-decoration: none;
@@ -209,28 +213,27 @@
         display: inline-block;
         margin-top: 30px;
         transition: 0.3s;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.1);
         border: 1px solid transparent;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
     .contact-btn:hover {
         transform: translateY(-5px);
         background: #ffffff;
-        box-shadow: 0 10px 30px rgba(34, 211, 238, 0.3); /* Cyan glow on hover */
+        box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
         border-color: var(--accent-cyan);
     }
 
-    /* Footer */
+    /* --- FOOTER --- */
     footer {
         text-align: center;
         padding: 60px;
         background-color: #050810;
         color: #475569;
         font-size: 0.85rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.02);
     }
 
-    /* Custom Scrollbar */
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
     ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
@@ -239,6 +242,7 @@
     @media (max-width: 1080px) {
         section { padding: 60px 5%; }
         .hero-header h1 { font-size: 2.5rem; }
+        table { min-width: 100%; }
     }
 </style>
 </head>
@@ -389,3 +393,4 @@
 </body>
 
 </html>
+
